@@ -19,11 +19,11 @@ function PlaceCard({
 }: PlaceCardProps): JSX.Element {
   return (
     <article className="cities__card place-card">
-      {isPremium ? (
+      {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
-      ) : null}
+      )}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={image} width={260} height={200} alt="Place image" />
