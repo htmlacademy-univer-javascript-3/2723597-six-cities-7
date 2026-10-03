@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './components/app/app';
-import { setting } from './constants';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './components/router/router';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -9,6 +9,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App offersCount={setting.offersCount} />
+    <RouterProvider router={router}>
+    </RouterProvider>
   </React.StrictMode>
 );
