@@ -4,23 +4,24 @@ import Main from '../main/main';
 import Login from '../login/login';
 import NotFound from '../not-found/notFound';
 import Favorites from '../favorites/favorites';
-import Offer from '../offer/offer';
+import OfferPage from '../offer/offer';
 import Layout from '../layout/layout';
+import { Offer } from '../../types/offer';
 
-export const router = createBrowserRouter([
+export const router = (offers: Offer[]) => createBrowserRouter([
   {
     element: <ProtectedRoute />,
     children: [
-      { path: '/favorites', element: <Favorites/>},
+      { path: '/favorites', element: <Favorites offers={offers} /> },
     ]
   },
+  { element: <NotFound />, path: '*' },
   {
     element: <Layout />,
     children: [
-      { path: '*', element: <NotFound/>},
-      { path: '/', element: <Main offersCount={312}/>},
-      { path: '/login', element: <Login/>},
-      { path: '/offer/:id', element: <Offer/>},
+      { path: '/', element: <Main offers={offers} /> },
+      { path: '/login', element: <Login /> },
+      { path: '/offer/:id', element: <OfferPage offers={offers} /> },
     ]
   }
 ]);
